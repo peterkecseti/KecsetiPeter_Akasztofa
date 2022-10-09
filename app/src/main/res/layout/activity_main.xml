@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:gravity="center">
+
+    <LinearLayout
+        android:paddingTop="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height="50dp"
+                android:layout_width="50dp"
+                android:background="@drawable/buttonbackround"
+                android:text="-"
+                android:id="@+id/buttonPrevChar"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:textSize="30sp"
+                android:layout_marginStart="10sp"
+                android:id="@+id/textViewChar"
+                android:minWidth="30sp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_height="50dp"
+                android:layout_width="50dp"
+                android:background="@drawable/buttonbackround"
+                android:text="+"
+                android:id="@+id/buttonNextChar"/>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SUBMIT"
+            android:textSize="20sp"
+            android:id="@+id/buttonSubmit"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/akasztofa00"
+            android:id="@+id/imageViewStage"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:id="@+id/textViewWord"
+        android:textSize="30sp"
+        android:letterSpacing="0.5"/>
+</RelativeLayout>
