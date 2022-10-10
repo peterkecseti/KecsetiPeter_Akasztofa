@@ -3,6 +3,7 @@ package com.bmszcpatrik.akasztofa;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +13,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -118,6 +118,16 @@ private int stage = 0;
 
 
     }
+    private void newGame(){
+        stage = 0;
+        usedChar = "";
+        placeholders = "";
+        letterStage = 0;
+        textViewChar.setText(letters[letterStage]);
+        textViewChar.setTextColor(Color.BLACK);
+        imageViewStage.setBackgroundResource(R.drawable.akasztofa00);
+        getRandomWord();
+    }
     private void init(){
         textViewWord = findViewById(R.id.textViewWord);
         textViewChar = findViewById(R.id.textViewChar);
@@ -154,22 +164,43 @@ private int stage = 0;
         new AlertDialog.Builder(MainActivity.this)
                 .setTitle("Nyertel!")
                 .setMessage("Kitalaltad a szot!")
-                .setPositiveButton("Kovetkezo kor", null) //TODO: kovetkezo kor
-                .setNegativeButton("Kilepes", null)       //TODO: kilepes
+                .setPositiveButton("Kovetkezo kor", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        newGame();
+                    }
+                }) //TODO: kovetkezo kor
+                .setNegativeButton("Kilepes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })       //TODO: kilepes
                 .show();
+
 
     }
     private void tookTheL(){
         new AlertDialog.Builder(MainActivity.this)
                 .setTitle("Vesztettel!")
                 .setMessage("Nem talaltad ki a szot!")
-                .setPositiveButton("Kovetkezo kor", null) //TODO: kovetkezo kor
-                .setNegativeButton("Kilepes", null)       //TODO: kilepes
+                .setPositiveButton("Kovetkezo kor", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        newGame();
+                    }
+                })
+                .setNegativeButton("Kilepes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                })
                 .show();
     }
     private void getRandomWord(){
-        //int index = r.nextInt(9);
-        int index = 2;
+        int index = r.nextInt(9);
+        //int index = 2;
         chosenWord = words.get(index);
 
         for (int i = 0; i < chosenWord.length(); i++) {
